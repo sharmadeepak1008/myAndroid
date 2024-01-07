@@ -13,14 +13,4 @@ interface Service {
     @GET(USERS)
     suspend fun getUsers(): UserResponse
 
-    @GET(TOP_NEWS)
-    suspend fun getTopNews(
-        @Query("country")
-        country:String,
-        @Query("page")
-        page:Int,
-        @Query("apiKey")
-        apiKey:String = API_KEY
-    ): APIResponse
-
 }

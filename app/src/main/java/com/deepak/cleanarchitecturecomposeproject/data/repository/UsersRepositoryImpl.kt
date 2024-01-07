@@ -1,6 +1,5 @@
 package com.deepak.cleanarchitecturecomposeproject.data.repository
 
-import com.deepak.cleanarchitecturecomposeproject.data.response.APIResponse
 import com.deepak.cleanarchitecturecomposeproject.data.response.UserResponse
 import com.deepak.cleanarchitecturecomposeproject.domain.repository.UsersRepository
 import com.deepak.cleanarchitecturecomposeproject.data.remote.Service
@@ -10,6 +9,5 @@ class UsersRepositoryImpl @Inject constructor(private val service: Service): Use
 
     override suspend fun getUsers(): UserResponse = service.getUsers()
 
-    override suspend fun getTopNews(country : String, page : Int): APIResponse = service.getTopNews(country,page)
 
 }

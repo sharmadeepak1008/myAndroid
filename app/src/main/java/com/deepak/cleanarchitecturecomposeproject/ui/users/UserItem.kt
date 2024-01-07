@@ -1,5 +1,6 @@
 package com.deepak.cleanarchitecturecomposeproject.ui.users
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,6 +11,7 @@ import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -30,6 +32,9 @@ fun UserItem(userUiModel: UserUiModel) {
     ) {
         Column {
             Row(modifier = Modifier.fillMaxWidth()) {
+                Image(painter = painterResource(id=R.drawable.ic_launcher_background),
+                    contentDescription =null )
+
                 Text(
                     text = stringResource(R.string.name),
                     textAlign = TextAlign.Center,
