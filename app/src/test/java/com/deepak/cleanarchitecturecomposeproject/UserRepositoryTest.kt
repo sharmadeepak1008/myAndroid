@@ -28,7 +28,6 @@ class UsersRepositoryTest {
 
     @Test
     fun `getUsers should return UserResponse`() = runBlocking {
-        // Arrange
         val mockUserList = listOf(
             UserResponseItem(
             Address("add", Geo("1","1"),"djdj","aa","111"),
@@ -43,9 +42,6 @@ class UsersRepositoryTest {
         // Act
         val result = usersRepository.getUsers()
         assertEquals(mockUserResponse, result)
-        // Assert
-        // Add your assertions based on the expected behavior
-        // For example: assertEquals(mockUserResponse, result)
     }
     @Test
     fun `getUsers should return EmptyUserResponse`() = runBlocking {
@@ -57,9 +53,6 @@ class UsersRepositoryTest {
         // Act
         val result = usersRepository.getUsers()
         assertEquals(mockUserResponse, result)
-        // Assert
-        // Add your assertions based on the expected behavior
-        // For example: assertEquals(mockUserResponse, result)
     }
 
 }
