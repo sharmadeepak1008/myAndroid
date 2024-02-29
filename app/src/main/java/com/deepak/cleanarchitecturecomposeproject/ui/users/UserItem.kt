@@ -1,6 +1,8 @@
 package com.deepak.cleanarchitecturecomposeproject.ui.users
 
+import android.util.Log
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,13 +17,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.deepak.cleanarchitecturecomposeproject.R
 import com.deepak.cleanarchitecturecomposeproject.domain.uimodel.UserUiModel
+import com.deepak.cleanarchitecturecomposeproject.navigation.Screen
 import com.deepak.cleanarchitecturecomposeproject.ui.theme.LightYellow
 
 
 @Composable
-fun UserItem(userUiModel: UserUiModel) {
+fun UserItem(userUiModel: UserUiModel,navController:NavController,usersViewModel: UsersViewModel) {
     Card(
         shape = RoundedCornerShape(8.dp),
         backgroundColor = LightYellow,
@@ -32,9 +36,6 @@ fun UserItem(userUiModel: UserUiModel) {
     ) {
         Column {
             Row(modifier = Modifier.fillMaxWidth()) {
-                Image(painter = painterResource(id=R.drawable.ic_launcher_background),
-                    contentDescription =null )
-
                 Text(
                     text = stringResource(R.string.name),
                     textAlign = TextAlign.Center,
@@ -74,6 +75,9 @@ fun UserItem(userUiModel: UserUiModel) {
                             top = 16.dp,
                             end = 8.dp
                         )
+                        .clickable
+                        {usersViewModel.redirectUserScreen(userUiModel,"username")  }
+
                 )
             }
 
@@ -96,6 +100,9 @@ fun UserItem(userUiModel: UserUiModel) {
                             top = 16.dp,
                             end = 8.dp
                         )
+                        .clickable {
+                                usersViewModel.redirectUserScreen(userUiModel,"website")
+                            }
                 )
             }
         }
