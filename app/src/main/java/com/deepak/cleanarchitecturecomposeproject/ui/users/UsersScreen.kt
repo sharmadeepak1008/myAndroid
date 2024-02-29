@@ -9,6 +9,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -23,25 +24,25 @@ import com.deepak.cleanarchitecturecomposeproject.utils.ErrorText
 
 @Composable
 fun UsersScreen(viewModel: UsersViewModel = hiltViewModel(),navController: NavController) {
-    val userValue= viewModel.itemData.collectAsState(initial = null)
-    val itemValue= viewModel.itemType.collectAsState(initial = null)
-
-    if (itemValue.value.equals("username")) {
-        userValue.value?.let {
+    val userValue= viewModel.itemData.collectAsState(initial = null).value
+    val itemValue= viewModel.itemType.collectAsState(initial = null).value
+    LaunchedEffect(key1 = itemValue, block = {
+        if (itemValue.equals("username")) {
+        userValue?.let {
             navController.navigate(
                 Screen.UserName.route + "/${it.username}"
             )
         }
     }
-    else if (itemValue.value.equals("website")){
-        userValue.value?.let {
+    else if (itemValue.equals("website")){
+        userValue?.let {
             navController.navigate(
                 Screen.Website.route+ "/${it.website}"
             )
         }
 
-        }
-
+    }
+    })
 
     Surface(
         modifier = Modifier.fillMaxSize()
